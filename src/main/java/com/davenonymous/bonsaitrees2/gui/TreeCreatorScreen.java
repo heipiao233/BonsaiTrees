@@ -11,6 +11,7 @@ import com.davenonymous.libnonymous.gui.framework.WidgetSlot;
 import com.davenonymous.libnonymous.gui.framework.widgets.WidgetPanel;
 import com.davenonymous.libnonymous.gui.framework.widgets.WidgetTabsPanel;
 import com.davenonymous.libnonymous.render.MultiblockBlockModel;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Slot;
@@ -41,47 +42,57 @@ public class TreeCreatorScreen extends WidgetContainerScreen<TreeCreatorContaine
         GUI gui = new GUI(0, 0, width, height);
 
 
-        WidgetTabsPanel tabs = new WidgetTabsPanel();
-        tabs.setEdge(WidgetTabsPanel.TabDockEdge.WEST);
-        tabs.setDimensions(5, 5, width-10, height-10);
-        gui.add(tabs);
+        // WidgetTabsPanel tabs = new WidgetTabsPanel();
+        // tabs.setEdge(WidgetTabsPanel.TabDockEdge.WEST);
+        // tabs.setDimensions(5, 5, width-10, height-10);
+        // tabs.setPosition(0, 0);
+        // gui.add(tabs);
 
         ModelPanel modelPanel = new ModelPanel(width, height, model);
-        tabs.addPage(modelPanel, new ItemStack(Items.OAK_LOG));
+        // tabs.addPage(modelPanel, new ItemStack(Items.OAK_LOG));
+        gui.add(modelPanel);
 
         PropertiesPanel propertiesPanel = new PropertiesPanel(width, height);
-        tabs.addPage(propertiesPanel, new ItemStack(Items.REDSTONE));
+        propertiesPanel.setPosition(0, 100);
+        gui.add(propertiesPanel);
+        // tabs.addPage(propertiesPanel, new ItemStack(Items.REDSTONE));
 
         DropsPanel dropsPanel = new DropsPanel(width, height);
         dropsPanel.setId(STATE_DROPS);
-        tabs.addPage(dropsPanel, new ItemStack(Blocks.DROPPER));
+        gui.add(dropsPanel);
+        // tabs.addPage(dropsPanel, new ItemStack(Blocks.DROPPER));
 
-        SavePanel savePanel = new SavePanel(width, height, model);
-        tabs.addPage(savePanel, new ItemStack(Items.MUSIC_DISC_CHIRP));
+        // SavePanel savePanel = new SavePanel(width, height, model);
+        // tabs.addPage(savePanel, new ItemStack(Items.MUSIC_DISC_CHIRP));
 
-        WidgetPanel buttonPanel = tabs.getButtonsPanel();
-        buttonPanel.setPosition(-28, 0);
-        buttonPanel.setSize(28, 120);
-        gui.add(buttonPanel);
+        // WidgetPanel buttonPanel = tabs.getButtonsPanel();
+        // buttonPanel.setPosition(0, 0);
+        // buttonPanel.setSize(28, 120);
+        // gui.add(buttonPanel);
 
 
-        // Bind all slots to the matching widgets
-        for(Slot slot : this.container.inventorySlots) {
-            if(!(slot instanceof WidgetSlot)) {
-                continue;
-            }
+        // // Bind all slots to the matching widgets
+        // for(Slot slot : this.container.inventorySlots) {
+        //     if(!(slot instanceof WidgetSlot)) {
+        //         continue;
+        //     }
 
-            WidgetSlot widgetSlot = (WidgetSlot)slot;
-            if(widgetSlot.matches(TreeCreatorContainer.SLOTGROUP_PLAYER)) {
-                widgetSlot.bindToWidget(propertiesPanel);
-                widgetSlot.bindToWidget(dropsPanel);
-            } else if(widgetSlot.matches(TreeCreatorContainer.SLOTGROUP_SETUP)) {
-                widgetSlot.bindToWidget(propertiesPanel);
-            }
-        }
+        //     WidgetSlot widgetSlot = (WidgetSlot)slot;
+        //     if(widgetSlot.matches(TreeCreatorContainer.SLOTGROUP_PLAYER)) {
+        //         widgetSlot.bindToWidget(propertiesPanel);
+        //         widgetSlot.bindToWidget(dropsPanel);
+        //     } else if(widgetSlot.matches(TreeCreatorContainer.SLOTGROUP_SETUP)) {
+        //         widgetSlot.bindToWidget(propertiesPanel);
+        //     }
+        // }
 
         gui.findValueWidgets();
 
         return gui;
+    }
+
+    @Override
+    protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(stack, partialTicks, mouseX, mouseY);
     }
 }

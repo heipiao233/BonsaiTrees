@@ -3,10 +3,11 @@ package com.davenonymous.bonsaitrees2.compat.crafttweaker.soil;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 import com.davenonymous.bonsaitrees2.block.ModObjects;
 import com.davenonymous.bonsaitrees2.registry.soil.SoilInfo;
+
+import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
 import org.openzen.zencode.java.ZenCodeType;
 
@@ -14,7 +15,7 @@ import org.openzen.zencode.java.ZenCodeType;
 @ZenCodeType.Name("mods.bonsaitrees2.Soil")
 public class Soil {
     @ZenCodeType.Method
-    public static void create(String id, IIngredient ingredient, MCBlockState displayState, float tickModifier, String[] tags) {
+    public static void create(String id, IIngredient ingredient, BlockState displayState, float tickModifier, String[] tags) {
         CraftTweakerAPI.apply(new SoilActionCreate(id, ingredient, displayState, tickModifier, tags));
     }
 

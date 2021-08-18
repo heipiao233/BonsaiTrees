@@ -1,0 +1,78 @@
+{
+  "type": "bonsaitrees2:sapling/minecraft/warped_fungus",
+  "version": 3,
+  "ref": {
+    "a": {
+      "block": "minecraft:warped_wart_block"
+    },
+    "b": {
+      "block": "minecraft:warped_stem"
+    },
+    "c": {
+      "block": "minecraft:shroomlight"
+    },
+    "d": {
+      "block": "minecraft:twisting_vines_plant"
+    },
+    "e": {
+      "block": "minecraft:twisting_vines"
+    }
+  },
+  "shape": [
+    [
+      "     ",
+      "     ",
+      "     ",
+      " aaa ",
+      " d   ",
+      " d   ",
+      " e   ",
+      "     ",
+      "     "
+    ],
+    [
+      "     ",
+      "     ",
+      " aa  ",
+      "a caa",
+      "  a  ",
+      "     ",
+      "     ",
+      "     ",
+      "     "
+    ],
+    [
+      "     ",
+      "     ",
+      " aaa ",
+      "a b a",
+      " aba ",
+      "adb a",
+      "adb  ",
+      "adb  ",
+      " eb  "
+    ],
+    [
+      "     ",
+      "     ",
+      "  aa ",
+      "aa  a",
+      "  aa ",
+      "    a",
+      "    a",
+      "     ",
+      "     "
+    ],
+    [
+      "     ",
+      "     ",
+      "     ",
+      "aaaaa",
+      " d  d",
+      " da d",
+      " da e",
+      " e   ",
+      "     "
+    ]
+  ]
+}

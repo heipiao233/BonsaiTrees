@@ -8,6 +8,7 @@ import com.davenonymous.bonsaitrees2.render.TreeModels;
 import net.minecraft.resources.IReloadableResourceManager;
 import net.minecraft.resources.IResourceManagerReloadListener;
 import net.minecraftforge.client.event.RecipesUpdatedEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -16,13 +17,13 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 
 public class ForgeEventHandlers {
     @SubscribeEvent
-    public void serverLoad(FMLServerStartingEvent event) {
-        ModCommands.register(event.getCommandDispatcher());
+    public void registerCommands(RegisterCommandsEvent event) {
+        ModCommands.register(event.getDispatcher());
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void startServer(FMLServerAboutToStartEvent event) {
-        IReloadableResourceManager manager = event.getServer().getResourceManager();
+        IReloadableResourceManager manager = (IReloadableResourceManager) event.getServer().getDataPackRegistries().getResourceManager();
         manager.addReloadListener((IResourceManagerReloadListener) resourceManager -> {
             SoilCompatibility.INSTANCE.update(event.getServer().getRecipeManager().getRecipes());
         });

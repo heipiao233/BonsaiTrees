@@ -1,0 +1,44 @@
+{
+  "type": "bonsaitrees2:sapling",
+  "mod": "minecraft",
+
+  "sapling": {
+    "item": "minecraft:warped_fungus"
+  },
+
+  "drops": [
+    {
+      "result": {
+        "item": "minecraft:twisting_vines"
+      },
+      "rolls": 3,
+      "chance": 0.2
+    },
+
+    {
+      "result": {
+        "item": "minecraft:warped_stem"
+      },
+      "rolls": 1,
+      "chance": 0.75
+    },
+
+    {
+      "result": {
+        "item": "minecraft:warped_wart_block"
+      },
+      "rolls": 1,
+      "chance": 0.1
+    },
+
+    {
+      "result": {
+        "item": "minecraft:warped_fungus"
+      },
+      "rolls": 1,
+      "chance": 0.05
+    }
+  ],
+
+  "compatibleSoilTags": ["warped_nylium"]
+}

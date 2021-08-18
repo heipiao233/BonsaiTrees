@@ -1,0 +1,78 @@
+{
+  "type": "bonsaitrees2:sapling/minecraft/crimson_fungus",
+  "version": 3,
+  "ref": {
+    "a": {
+      "block": "minecraft:nether_wart_block"
+    },
+    "b": {
+      "block": "minecraft:crimson_stem"
+    },
+    "c": {
+      "block": "minecraft:shroomlight"
+    },
+    "d": {
+      "block": "minecraft:weeping_vines_plant"
+    },
+    "e": {
+      "block": "minecraft:weeping_vines"
+    }
+  },
+  "shape": [
+    [
+      "     ",
+      "     ",
+      "     ",
+      " aaa ",
+      " d   ",
+      " d   ",
+      " e   ",
+      "     ",
+      "     "
+    ],
+    [
+      "     ",
+      "     ",
+      " aa  ",
+      "a caa",
+      "  a  ",
+      "     ",
+      "     ",
+      "     ",
+      "     "
+    ],
+    [
+      "     ",
+      "     ",
+      " aaa ",
+      "a b a",
+      " aba ",
+      "adb a",
+      "adb  ",
+      "adb  ",
+      " eb  "
+    ],
+    [
+      "     ",
+      "     ",
+      "  aa ",
+      "aa  a",
+      "  aa ",
+      "    a",
+      "    a",
+      "     ",
+      "     "
+    ],
+    [
+      "     ",
+      "     ",
+      "     ",
+      "aaaaa",
+      " d  d",
+      " da d",
+      " da e",
+      " e   ",
+      "     "
+    ]
+  ]
+}

@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.+', changing: true
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -14,6 +14,12 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 repositories {
+    maven { // Jade
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     maven { // TOP
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
@@ -29,10 +35,20 @@ repositories {
     maven {
         name 'davenonymous maven'
         url "http://maven.davenonymous.com/repository/maven-releases"
+        allowInsecureProtocol = true
     }
     maven {
-        name 'hwyla'
-        url "https://tehnut.info/maven"
+        name 'modmaven'
+        url "https://modmaven.dev"
+    }
+    maven {
+        name 'forge'
+        url "https://maven.minecraftforge.net"
+    }
+    maven {
+        name 'local'
+        url "file:///${project.projectDir}/libs"
+        allowInsecureProtocol = true
     }
 }
 
@@ -114,23 +130,22 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    compileOnly fg.deobf("mezz.jei:jei-1.15.2:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:${jei_version}")
+    compileOnly "mezz.jei:jei-1.16.5:${jei_version}:api"
+    runtimeOnly "mezz.jei:jei-1.16.5:${jei_version}:deobf"
 
-    compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
+//    compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
 
-    compile fg.deobf("mcjty.theoneprobe:TheOneProbe-1.15:${top_version}") {
-        transitive = false
-    }
 
-    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.15.1:${crafttweaker_version}")
+   compileOnly "mcjty.theoneprobe:TheOneProbe-1.16:${top_version}:api"
 
-    if (findProject(':Libnonymous') != null) {
-        compile project(':Libnonymous')
-    } else {
-        compile fg.deobf ("com.davenonymous.libnonymous:libnonymous-1.15.2:${libnonymous_version}:")
-    }
+   implementation "com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crafttweaker_version}:deobf"
 
+//    if (findProject(':Libnonymous') != null) {
+//        compile project(':Libnonymous')
+//    } else {
+       compileOnly "com.davenonymous.libnonymous:libnonymous-1.16.5:${libnonymous_version}:deobf"
+//    }
+    implementation fg.deobf("curse.maven:jade-324717:3389760")
 }
 
 allprojects {
@@ -190,7 +205,8 @@ publishing {
             }
         }
         maven {
-            name = "davenonymous maven"
+            allowInsecureProtocol = true
+            name = "davenonymous_maven"
             url = uri("http://maven.davenonymous.com/repository/maven-releases")
             credentials {
                 username = "davenonymous"
